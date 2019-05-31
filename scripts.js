@@ -24,3 +24,15 @@ for (let i = 0; i < linkTags.length; i++) {
       })
   });
 }
+const Inputtags = document.querySelectorAll('input');
+
+for (let i = 0; i < Inputtags.length; i++) {
+  Inputtags[i].addEventListener('blur', function(e) {
+    e.preventDefault();
+
+    app.database().ref('command').set({
+      time: new Date().getTime(),
+      text: e.target.value
+    });
+  });
+}
